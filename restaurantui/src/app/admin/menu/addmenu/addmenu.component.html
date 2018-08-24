@@ -1,0 +1,69 @@
+
+<div class="col-lg-10">
+  <h3>{{ title }}</h3>
+  <form #MenuForm="ngForm" novalidate autocomplete="off"  >
+    <div class="col-sm-6  ui-md-6 ui-fluid">
+        <mt-input-container errorMessage="Campo apelido é obrigatório" label="Categorias">
+            <p-dropdown [options]="menusCategorias" name="restaurantId" 
+            placeholder="Selecione" [autoWidth]="false"
+            [(ngModel)]="menu.restaurantId"  required 
+            ></p-dropdown>
+            
+        </mt-input-container>
+      </div>
+
+      
+    <div class="col-sm-6 col-xs-12">
+        <p><label>Upload de Imagem</label>
+            <input type="file"  
+            placeholder="faça o upload de imagem" 
+            (change)="fileChangeEvent($event)"/>
+        </p>
+      </div>
+    <div class="col-sm-12 col-xs-12">
+          <mt-input-container errorMessage="Campo obrigatório e com 5 caracteres"  label="Nome">
+              <input class="form-control" name="name"  
+              [(ngModel)]="menu.name" required minlength="5"  
+              placeholder="Digite o nome do Menu" >
+          </mt-input-container>
+    </div>
+    <div class="col-sm-12 col-xs-12">
+      <mt-input-container errorMessage="Campo obrigatório e com 5 caracteres"  label="Descrição">
+          <input class="form-control" name="description"  
+          [(ngModel)]="menu.description" required minlength="5"  
+          placeholder="Digite a descrição do menu" >
+      </mt-input-container>
+    </div>
+    <div class="col-sm-6 col-xs-12">
+        <mt-input-container  label="Apelido">
+            <input class="form-control" name="id"  
+            [(ngModel)]="menu.id" required minlength="5"  
+            placeholder="Digite o apelido do menu" >
+        </mt-input-container>
+      </div>
+    <div class="col-sm-6 col-xs-12">
+      <mt-input-container  label="Preço">
+          <input class="form-control" name="price"  
+          [(ngModel)]="menu.price" required  
+          placeholder="Digite o preço do menu" >
+      </mt-input-container>
+    </div>
+
+    
+</form>
+
+<div class="row">
+    <div class="col-xs-12">
+      <button (click)="onSubmit(MenuForm.value)" [disabled]="!MenuForm.valid"   class="btn btn-success pull-right" 
+       ><i class="fa fa-credit-card">
+      </i> Salvar
+      </button>
+    </div>
+  </div>
+
+</div>
+
+  
+
+
+

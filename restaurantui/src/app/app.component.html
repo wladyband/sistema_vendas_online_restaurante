@@ -1,0 +1,33 @@
+<div class="wrapper">
+
+  <mt-header></mt-header>
+
+  <!-- Full Width Column -->
+  <div class="content-wrapper">
+    <div class="container">
+
+      <router-outlet></router-outlet>
+
+    </div>
+  </div>
+
+  <mt-snackbar></mt-snackbar>
+
+  <footer class="main-footer">
+    <div class="container">
+      <div class="pull-right hidden-xs">
+        <b>Version</b> 1.0.0
+      </div>
+      <strong>Meat</strong> Angular Application
+    </div>
+  </footer>
+</div>
+
+<p-confirmDialog header="Confirmação" icon="fa fa-question-circle" #confirmacao>
+  <p-footer>
+    <button type="button" pButton icon="fa fa-check" label="Sim"
+      (click)="confirmacao.accept()"></button>
+    <button type="button" pButton icon="fa fa-times" label="Não"
+      (click)="confirmacao.reject()"></button>
+  </p-footer>
+</p-confirmDialog>

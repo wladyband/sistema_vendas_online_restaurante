@@ -1,0 +1,84 @@
+
+<div class="col-lg-10">
+    <h3>{{ title }}</h3>
+    <form #restaurantForm="ngForm" novalidate autocomplete="off"  >
+        <div class="col-sm-12 col-xs-12">
+            <mt-input-container  label="Nome">
+                <input class="form-control" name="name"  
+                [(ngModel)]="restaurant.name"  
+                placeholder="Digite o nome do restaurante" >
+            </mt-input-container>
+      </div>
+      <div class="col-sm-12 col-xs-12">
+        <mt-input-container  label="Nome">
+            <input class="form-control" name="id"  
+            [(ngModel)]="restaurant.id"  
+            placeholder="Digite o nome do restaurante" >
+        </mt-input-container>
+     </div>
+      <div class="col-sm-6 col-xs-12">
+        <mt-input-container label="Categoria">
+            <input class="form-control" name="category"  
+            [(ngModel)]="restaurant.category"  
+            placeholder="Digite a categoria" >
+        </mt-input-container>
+  </div>
+  <div class="col-sm-6 col-xs-12">
+      <mt-input-container  label="Nota">
+          <input class="form-control" name="rating"  
+          [(ngModel)]="restaurant.rating"  
+          placeholder="Digite a nota" >
+      </mt-input-container>
+  </div>
+
+  <div class="col-sm-12 col-xs-12">
+      <mt-input-container  label="Estimativa">
+          <textarea class="form-control" name="deliveryEstimate"  
+          [(ngModel)]="restaurant.deliveryEstimate"  
+          placeholder="Estimativa"></textarea>
+      </mt-input-container>
+  </div>
+ 
+
+  <div class="col-sm-12 col-xs-12">
+      <mt-input-container  label="Origem">
+          <textarea class="form-control" name="about"  
+          [(ngModel)]="restaurant.about" 
+          placeholder="Origem"></textarea>
+      </mt-input-container>
+  </div>
+   
+  <div class="col-sm-12 col-xs-12">
+      <mt-input-container  label="Funcionamento">
+          <textarea class="form-control" name="hours"  
+          [(ngModel)]="restaurant.hours"  
+          placeholder="Digite o horário de funcionamento"></textarea>
+      </mt-input-container>
+  </div>
+  
+
+  <div class="col-sm-12 col-xs-12" *ngIf="is_edit && restaurant.image">
+        <div class="image_for_edit">
+          <img src="{{url + '/imageRestaurante/' + restaurant.image }}" />
+        </div>
+      </div>
+
+  <div class="col-sm-12 col-xs-12">
+        <p><label>Upload de Imagem</label>
+            <input type="file"  
+            placeholder="faça o upload de imagem" 
+            (change)="fileChangeEvent($event)"/>
+        </p>
+      </div>
+</form>
+
+  <div class="row">
+      <div class="col-xs-12">
+        <button (click)="onSubmit(restaurantForm.value)" class="btn btn-success pull-right" 
+         ><i class="fa fa-credit-card">
+        </i> Salvar
+        </button>
+      </div>
+    </div>
+
+</div>

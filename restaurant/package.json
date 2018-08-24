@@ -1,0 +1,25 @@
+{
+  "name": "restaurant",
+  "version": "1.0.0",
+  "description": "Para rei das coxinhas",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Wladimir Bandeira",
+  "license": "ISC",
+  "dependencies": {
+    "api-query-params": "^4.5.1",
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.18.3",
+    "connect-multiparty": "^2.1.1",
+    "express": "^4.16.3",
+    "jwt-simple": "^0.5.1",
+    "moment": "^2.22.1",
+    "mongoose": "^4.11.3"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.5"
+  }
+}

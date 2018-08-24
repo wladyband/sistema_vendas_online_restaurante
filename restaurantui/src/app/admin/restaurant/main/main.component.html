@@ -1,0 +1,24 @@
+<div class="col-lg-2">
+  <h1>{{ title }}</h1>
+  <div class="siderbar-admin" data-simple-id="simples-nav-stacked">
+      <ul class="nav nav-pills nav-stacked nav-pills-stacked-example">
+          <li role="presentation" [routerLinkActive]="['active']">
+            <a [routerLink]="['listas']">Lista de Restaurantes</a>
+          </li>
+          <li role="presentation" [routerLinkActive]="['active']">
+              <a [routerLink]="['criar']">Adicionar Restaurantes</a>
+          </li>
+          <li role="presentation" [routerLinkActive]="['active']">
+            <a [routerLink]="['menu']">Lista de Cardápio</a>
+        </li>
+        <li role="presentation" [routerLinkActive]="['active']">
+          <a [routerLink]="['cria_menu']">Adicionar Menu</a>
+      </li>
+        </ul>
+  </div>
+</div>
+
+
+<div class="col-lg-9">
+<router-outlet></router-outlet>
+</div>
