@@ -45,7 +45,9 @@ router.get('/imageRestaurante/:imageFile',  controller.getImageFile);
 
 router.post('/cria_menu', controller.postMenu);
 router.get('/menuCategoria', controller.getMenusCategoria); 
+router.get('/menuCategoria/:id', controller.getMenusCategoriaPorId); 
 router.delete('/menu/:id', controller.deleteMenu);
+router.put('/menu/:id', controller.updateMenu);
 
 
 //Mostrar imagem menu
@@ -53,6 +55,9 @@ router.get('/imageMenu/:imageFile',  controller.getImageFileMenu);
 
 //salvar imagem menu
 router.post('/uploadMenu/:id', [md_uploadMenu], controller.uploadImagemMenu);
+
+//para atualização do menu
+router.get('/admin-painel/editMenu/:id', controller.getMenuId);
 
 
 

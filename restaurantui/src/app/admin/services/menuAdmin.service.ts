@@ -45,15 +45,6 @@ export class MenuAdminService {
     }
 
 
-
-    categoriasMenu(){
-      const headers = new Headers();
-          
-      return this._http.get(this.url+'/menuCategoria', { headers })
-        .toPromise()
-        .then(response => response.json());
-    }
-
     pesquisar(filtro: ContratoMenu): Promise<any> {
           const params = new URLSearchParams();
           const headers = new Headers();
@@ -85,14 +76,38 @@ export class MenuAdminService {
 
     }
 
-
-
     excluir(_id: number): Promise<void> {
       const headers = new Headers();
       return this._http.delete(`${this.url}/menu/${_id}`, { headers })
       
         .toPromise()
         .then(() => null);
+    }
+
+    //admin-painel/editMenu/
+
+    getMenuEdit(id){
+      return this._http.get(this.url+'/admin-painel/editMenu/'+id).map(res => res.json());
+    }
+
+    categoriasMenu(){
+      const headers = new Headers();
+          
+      return this._http.get(this.url+'/menuCategoria', { headers })
+        .toPromise()
+        .then(response => response.json());
+    }
+
+
+
+    editMenu(id, restaurant){
+      let params = JSON.stringify(restaurant);
+      let headers = new Headers({
+        'Content-Type':'application/json'
+      });
+
+      return this._http.put(this.url+'/menu/'+id, params, {headers: headers})
+               .map(res => res.json());
     }
 
 }

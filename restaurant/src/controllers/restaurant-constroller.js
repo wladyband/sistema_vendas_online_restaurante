@@ -55,6 +55,27 @@ function updateRestaurant(req, res){
 	});
 }
 
+function updateMenu(req, res){
+	var menuId = req.params.id;
+	var update = req.body;
+
+	Menus.findByIdAndUpdate(menuId, update, {new:true}, (err, menuUpdated) => {
+		if(err){
+			res.status(500).send({
+				message: 'Error de solicitação'
+			});
+		}else{
+			if(!menuUpdated){
+				res.status(404).send({
+					message: 'Não existe menu'
+				});
+			}else{
+				res.status(200).send({menu: menuUpdated});
+			}
+		}
+	});
+}
+
 
 
 function getSlugId (req, res) {
@@ -81,6 +102,31 @@ function getSlugId (req, res) {
 			}
 		})
 	}
+
+	function getMenuId (req, res) {
+		//	restaurantId: req.params.restaurantId
+		 
+			Menus
+			.findById(
+				req.params.id
+			).exec((err, menus)  => {
+				if(err){
+					res.status(500).send({
+						message: 'Error na solicitação'
+					});
+				}else{
+					if(!menus){
+						res.status(404).send({
+							message: 'Não existe nenhum Reviews nesse registro'
+						});
+					}else{
+						res.status(200).send({
+							menus
+						});
+					}
+				}
+			})
+		}
 
 
 function getSlug (req, res) {
@@ -180,7 +226,9 @@ function getMenus (req, res) {
 
 function getMenusCategoria (req, res) {
 	Restaurants
-	.find({	}, ' id name')
+	.find({
+	
+		}, ' id name')
 	.exec((err, menu)  => {
 		if(err){
 			res.status(500).send({
@@ -200,7 +248,27 @@ function getMenusCategoria (req, res) {
 	})
 }
 
-
+function getMenusCategoriaPorId (req, res) {
+	Restaurants
+	.findById( req.params.id , ' id name')
+	.exec((err, menu)  => {
+		if(err){
+			res.status(500).send({
+				message: 'Error na solicitação do método menu'
+			});
+		}else{
+			if(!menu){
+				res.status(404).send({
+					message: 'Não existe nenhum Reviews nesse registro'
+				});
+			}else{
+				res.status(200).send({
+					menu
+				});
+			}
+		}
+	})
+}
 
 
 
@@ -493,11 +561,14 @@ module.exports = {
     get,
 	getSlug,
 	getSlugId,
+	getMenuId,
     getReviews,
 	getMenu,
 //	getMenus,
 	getMenusCategoria,
+	getMenusCategoriaPorId,
 	updateRestaurant,
+	updateMenu,
 
     postRestaurant,
 	postOrder,

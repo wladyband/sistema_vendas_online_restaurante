@@ -41,7 +41,8 @@
                       </p-column>
                       <p-column styleClass="col-acoes">
                               <ng-template let-lanc="rowData"  pTemplate="body">
-                                <button pButton icon="fa fa-pencil" pTooltip="Editar" tooltipPosition="top"></button>
+                                <button pButton icon="fa fa-pencil" pTooltip="Editar" tooltipPosition="top"
+                                [routerLink]="['/admin-painel/menuEditar', lanc._id]"></button>
                                 <button pButton icon="fa fa-trash" 
                                    pTooltip="Excluir" 
                                    tooltipPosition="top" 
